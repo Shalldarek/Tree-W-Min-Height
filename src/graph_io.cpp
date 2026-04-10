@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 std::vector<std::vector<int>> loadGraph(std::string location) {
     std::fstream file(location);
