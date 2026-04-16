@@ -27,3 +27,14 @@ std::vector<int> bfs_distance(std::vector<std::vector<int>> graph, int start_top
 
     return distances;
 }
+
+int get_farthest_node(std::vector<int> distances) {
+    int farthert_distance = -1;
+    for (int i = 0; i < distances.size(); i++) {
+        if (distances[i] > farthert_distance) {
+            farthert_distance = i;
+        }
+    }
+
+    return farthert_distance;
+}
