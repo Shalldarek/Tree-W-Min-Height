@@ -1,6 +1,11 @@
 #pragma once
-#include "vector"
+#include <vector>
 
-std::vector<int> bfs_distance(std::vector<std::vector<int>> graph, int start_top);
+struct BFSResult {
+    std::vector<int> distances;
+    std::vector<int> parents;
+};
+
+BFSResult bfs_distance(std::vector<std::vector<int>> graph, int start_top);
 
 int get_farthest_node(std::vector<int> distances);

@@ -15,17 +15,21 @@ int main() {
     }
     std::cout << "-----------------------------------" << std::endl;
 
-    auto distances_from_start = bfs_distance(graph, 0);
+    BFSResult result_start = bfs_distance(graph, 0);
+
+    auto distances_from_start = result_start.distances;
     
     int node_A = get_farthest_node(distances_from_start);
-    std::cout << "First explorer found the first farthest point (Point A): " << node_A << std::endl;
+    std::cout << "First explorer found Point A: " << node_A << std::endl;
 
-    auto distances_from_A = bfs_distance(graph, node_A);
+
+    BFSResult result_A = bfs_distance(graph, node_A);
+ 
+    auto distances_from_A = result_A.distances;
 
     int node_B = get_farthest_node(distances_from_A);
-    std::cout << "Second explorer found the second end of the path (Point B): " << node_B << std::endl;
-    
-    std::cout << "The distance of this path is: " << distances_from_A[node_B] << std::endl;
+    std::cout << "Second explorer found Point B: " << node_B << std::endl;
 
+    std::cout << "The distance of this path is: " << distances_from_A[node_B] << std::endl;
     return 0;
 }

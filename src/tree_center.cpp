@@ -3,9 +3,10 @@
 #include <vector>
 #include <queue>
 
-std::vector<int> bfs_distance(std::vector<std::vector<int>> graph, int start_top) {
+BFSResult bfs_distance(std::vector<std::vector<int>> graph, int start_top) {
     int num_of_tops = graph.size();
     std::vector<int> distances(num_of_tops, -1);
+    std::vector<int> parents(num_of_tops, -1);
 
     std::queue<int> q;
 
@@ -20,21 +21,25 @@ std::vector<int> bfs_distance(std::vector<std::vector<int>> graph, int start_top
         for (int neighbor : graph[actual]) {
             if (distances[neighbor] == -1) {
                 distances[neighbor] = distances[actual] + 1;
+                parents[neighbor] = actual;
                 q.push(neighbor);
             }
         }
     }
 
-    return distances;
+    return {distances, parents};
 }
 
 int get_farthest_node(std::vector<int> distances) {
-    int farthert_distance = -1;
+    int max_distance = -1;    
+    int farthest_node = -1;   
+
     for (int i = 0; i < distances.size(); i++) {
-        if (distances[i] > farthert_distance) {
-            farthert_distance = i;
+        if (distances[i] > max_distance) {
+            max_distance = distances[i]; 
+            farthest_node = i;        
         }
     }
 
-    return farthert_distance;
+    return farthest_node; 
 }
