@@ -31,5 +31,22 @@ int main() {
     std::cout << "Second explorer found Point B: " << node_B << std::endl;
 
     std::cout << "The distance of this path is: " << distances_from_A[node_B] << std::endl;
+
+    auto parents_from_A = result_A.parents;
+
+    std::vector<int> path;
+
+    int actual_node = node_B;
+
+    while (actual_node != -1) {
+        path.push_back(actual_node);
+                        
+        actual_node = parents_from_A[actual_node];
+
+        for (int i = 0; i < path.size(); i++) {
+            std::cout << "-> " << path[i] << std::endl; 
+        }
+    }
+
     return 0;
 }
