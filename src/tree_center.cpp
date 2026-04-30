@@ -5,11 +5,16 @@
 
 BFSResult bfs_distance(std::vector<std::vector<int>> graph, int start_top) {
     int num_of_tops = graph.size();
+
+    //-1 means ,,not visited yet''
     std::vector<int> distances(num_of_tops, -1);
+
+    //where did we come from to reach this node
     std::vector<int> parents(num_of_tops, -1);
 
     std::queue<int> q;
 
+    //start node is 0
     distances[start_top] = 0;
 
     q.push(start_top);
@@ -30,6 +35,7 @@ BFSResult bfs_distance(std::vector<std::vector<int>> graph, int start_top) {
     return {distances, parents};
 }
 
+// Function that returns the ID of the node that is the furthest away.
 int get_farthest_node(std::vector<int> distances) {
     int max_distance = -1;    
     int farthest_node = -1;   
